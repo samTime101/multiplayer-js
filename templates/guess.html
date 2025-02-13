@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guess the Number</title>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+</head>
+<body>
+    <h1>Guess the number!</h1>
+    <p>Your guess: {{ guess }}</p>
+    <p>Is it correct? {{ 'Yes' if correct else 'No' }}</p>
+    <p>Current endpoint: <span id="endpoint">{{ choose }}</span></p>
+
+    <script>
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+        socket.on('update_usr_choice', function(data) {
+            document.getElementById('endpoint').innerText = data.usr_choice;
+            alert("a new choice is set");
+        });
+    </script>
+</body>
+</html>
