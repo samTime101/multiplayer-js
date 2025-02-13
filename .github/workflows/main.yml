@@ -25,7 +25,7 @@ jobs:
 
       - name: Start Flask App
         run: |
-          gunicorn -b 0.0.0.0:5000 server:app
+          nohup gunicorn -b 0.0.0.0:5000 server:app &
 
       - name: Expose Flask App using Serveo
         run: |
