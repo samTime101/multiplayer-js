@@ -1,5 +1,6 @@
 *
 !templates/
+!templates/**
 !server.py
 !README.md
 !.gitignore
