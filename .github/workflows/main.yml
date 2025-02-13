@@ -31,6 +31,13 @@ jobs:
         run: |
           nohup python server.py &
 
-      - name: Start localtunnel and output link
+      - name: Install Cloudflare Tunnel
         run: |
-          lt --port 5000
+          curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o cloudflared
+          chmod +x cloudflared
+          sudo mv cloudflared /usr/local/bin/
+
+      - name: Start Cloudflare Tunnel
+        run: |
+          nohup cloudflared tunnel --url http://localhost:5000 &
+
