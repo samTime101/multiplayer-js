@@ -30,7 +30,10 @@ jobs:
           sudo apt update
           sudo apt install ngrok
 
-
+      - name: Authenticate Ngrok with GitHub Secrets
+        run: |
+          ngrok config add-authtoken ${{ secrets.NGROK_AUTH_TOKEN }}
+          
       - name: Start Flask App
         run: |
           nohup python app.py &
