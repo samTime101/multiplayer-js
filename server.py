@@ -18,7 +18,7 @@ usr_choice = 0
 @app.route('/play/', methods=['GET', 'POST'])
 def guess():
     if request.method == 'GET':
-        return render_template('guess.html', guess="")
+        return render_template('play.html', guess="")
     
     data = request.get_json()
     table_num = data.get("clicked", "").strip()
