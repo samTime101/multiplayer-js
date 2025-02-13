@@ -23,21 +23,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install flask flask_cors flask_socketio
 
-      - name: Install localtunnel
-        run: |
-          sudo npm install -g localtunnel
-
       - name: Start Flask App
         run: |
           nohup python server.py &
 
-      - name: Install Cloudflare Tunnel
+      - name: Expose Flask App using Serveo
         run: |
-          curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o cloudflared
-          chmod +x cloudflared
-          sudo mv cloudflared /usr/local/bin/
-
-      - name: Start Cloudflare Tunnel
-        run: |
-          nohup cloudflared tunnel --url http://localhost:5000 &
-
+          ssh -o StrictHostKeyChecking=no -R 80:localhost:5000 serveo.net
