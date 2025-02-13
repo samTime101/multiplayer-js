@@ -35,7 +35,7 @@ jobs:
 
       - name: Start Flask App
         run: |
-          nohup python app.py &
+          nohup python server.py &
 
       - name: get link
         run: |
