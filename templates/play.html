@@ -29,7 +29,7 @@
     </table>
 </body>
 <script>
-    var socket = io.connect('http://' + document.domain + ':' + location.port);
+    var socket = io.connect(location.origin);
     socket.on('clicked', function(data) {
         document.querySelectorAll('td').forEach(item=>{
             if (item.innerText == data.table_num){
