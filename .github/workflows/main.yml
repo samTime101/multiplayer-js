@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install flask , flask_cors ,flask_socketio
+          pip install flask flask_cors flask_socketio
 
       - name: Install Ngrok
         run: |
